@@ -1,0 +1,11 @@
+name: "Test API de Facturation"
+requests:
+  - name: "Créer une Facture"
+    method: POST
+    url: "https://api.lactalis.com/invoices"
+    body: 
+      type: json
+      content: { "customer_id": "12345", "amount": 100 }
+    assertions:
+      - "status equals 201"
+      - "response.body.invoice_id should not be null"
